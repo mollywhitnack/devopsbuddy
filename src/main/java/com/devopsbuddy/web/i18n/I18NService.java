@@ -1,37 +1,42 @@
 package com.devopsbuddy.web.i18n;
 
-import org.springframework.context.MessageSource;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Service;
 
-import javax.xml.ws.ServiceMode;
 import java.util.Locale;
 
 /**
- * Created by mollywhitnack on 3/14/17.
+ * Created by mollywhitnack on 07/03/2016.
  */
 @Service
 public class I18NService {
+    /** The appliction logger*/
+    private static final Logger LOG = LoggerFactory.getLogger(I18NService.class);
 
+    @Autowired
     private MessageSource messageSource;
 
-
     /**
-     * Returns  message for the given id and the default locale in the session context
+     * Returns a message for the given message id and the default locale in the session context
      * @param messageId The key to the messages resource file
-     */
-    public String getMessage(String messageId){
+     **/
+    public String getMessage(String messageId) {
+        LOG.info("Returning i18N message {}: " + messageId);
         Locale locale = LocaleContextHolder.getLocale();
         return getMessage(messageId, locale);
     }
 
     /**
-     * Returns  message for the given id and locale
+     * Returns a messsage for the given message id and locale
      * @param messageId The key to the messages resource file
      * @param locale The Locale
-     */
-    public String getMessage(String messageId, Locale locale){
+     **/
+    public String getMessage(String messageId, Locale locale) {
         return messageSource.getMessage(messageId, null, locale);
     }
+
 }
