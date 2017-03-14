@@ -1,7 +1,24 @@
 <!DOCTYPE html>
-<html>
-	<head><title>Hello World</title></head>
-	<body>
-		<h1>Hello World</h1>
-	</body>
+<html lang="en" xmlns:th="http://wwww.thymeleaf.org">
+<head th:replace="common/header :: common-header"/>
+
+<body>
+
+    <div th:replace="common/navbar :: common-navbar"/>
+
+    <div class="container">
+        <div class="starter-template">
+            <h1>Bachelor Bracket</h1>
+            <p class="lead">Use this document as a way to quickly start any new project.<br /> All you get is this text and a
+                mostly barebones HTML document.</p>
+        </div>
+    </div><!-- /.container -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/3.3.6/js/bootstrap.min.js}"></script>
+
+</body>
 </html>
